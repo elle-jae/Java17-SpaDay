@@ -29,15 +29,24 @@
                 </th:block>
             </table>
         </div>
-        <div th:if="${manipedi.equals('manicure')}">
+        <div th:if="${manipedi.equals('manicure')} or ${manipedi.equals('both')}">
             <h3>Manicure</h3>
-            <p th:replace="fragments :: manicureDescription"></p>
+            <p th:replace="~{fragments :: manicureDescription}"></p>
         </div>
-        <div th:if="${manipedi.equals('pedicure')}">
+        <div th:if="${manipedi.equals('pedicure')}  or ${manipedi.equals('both')}">
             <h3>Pedicure</h3>
-            <p th:replace="fragments :: pedicureDescription"></p>
+            <p th:replace="~{fragments :: pedicureDescription}"></p>
         </div>
     </div>
+
+<footer>
+    <div>Ask us about our newest polish colors!</div>
+    <div id="polish-collection">
+        <th:block th:each="polish : ${polishChoices}">
+            <div class="polish-sample" th:style="'background: ' + ${polish}"></div>
+        </th:block>
+    </div>
+</footer>
 
 </body>
 </html>
